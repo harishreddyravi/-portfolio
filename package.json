@@ -1,0 +1,19 @@
+{
+  "name": "harish-portfolio",
+  "version": "1.0.0",
+  "description": "Harish Reddy Ravi – Professional Portfolio with AI Agent",
+  "main": "api/chat.js",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo 'Static site — no build step required'"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  },
+  "devDependencies": {
+    "vercel": "^39.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -164,6 +164,12 @@ async function sendMessage(input, btn) {
   }
 }
 
+// ── Redacted fields: click to permanently reveal ──
+document.querySelectorAll('.redacted').forEach(el => {
+  el.title = 'Click to reveal';
+  el.addEventListener('click', () => el.classList.add('revealed'));
+});
+
 // ── Nav scroll shadow ──
 window.addEventListener('scroll', () => {
   document.getElementById('navbar').style.boxShadow =

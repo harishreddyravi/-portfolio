@@ -457,6 +457,20 @@ footer {
   padding: 0 0 .55rem; background: var(--surface);
 }
 
+/* ── Redacted / blur-to-reveal ── */
+.redacted {
+  filter: blur(5px);
+  cursor: pointer;
+  transition: filter .3s ease;
+  user-select: none;
+  border-radius: 3px;
+}
+.redacted:hover,
+.redacted.revealed {
+  filter: blur(0);
+  user-select: text;
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }

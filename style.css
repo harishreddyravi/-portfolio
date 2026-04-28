@@ -84,6 +84,32 @@ a:hover { text-decoration: underline; }
   mask-image: radial-gradient(ellipse 80% 80% at 60% 50%, black 30%, transparent 80%);
 }
 
+/* ── Domain background watermarks ── */
+.domain-bg {
+  position: absolute; inset: 0;
+  pointer-events: none; z-index: 0; overflow: hidden;
+}
+.dbg {
+  position: absolute;
+  display: flex; flex-direction: column; align-items: center; gap: .55rem;
+  opacity: .09; color: var(--navy);
+  transition: opacity .3s;
+}
+.dbg svg { display: block; }
+.dbg span {
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--navy);
+}
+/* Individual positions */
+.dbg.controls     { top: 12%;  left: 3%;   width: 90px;  }
+.dbg.controls svg { width: 64px; height: 64px; }
+.dbg.risk         { bottom: 16%; left: 7%;  width: 90px; }
+.dbg.risk svg     { width: 60px; height: 60px; }
+.dbg.architecture { top: 10%;   right: 3%; width: 100px; }
+.dbg.architecture svg { width: 70px; height: 70px; }
+.dbg.change       { bottom: 14%; right: 5%; width: 100px; }
+.dbg.change svg   { width: 66px; height: 66px; }
+
 .hero-content { max-width: 540px; position: relative; z-index: 1; }
 
 .hero-badge {
@@ -218,6 +244,35 @@ section:not(#hero) { padding: 5rem 2rem; }
   width: 44px; height: 3px;
   background: linear-gradient(90deg, var(--blue), var(--blue-lt));
   border-radius: 2px;
+}
+
+/* ── Section watermarks ── */
+#about, #experience, #certifications, #contact { position: relative; overflow: hidden; }
+
+#about::after, #experience::after, #certifications::after, #contact::after {
+  content: '';
+  position: absolute; bottom: -20px; right: -20px;
+  width: 220px; height: 220px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: .045;
+  pointer-events: none;
+}
+/* Controls icon — About */
+#about::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a3050' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L3 6v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V6L12 2z'/%3E%3Cpolyline points='9 12 11 14 15 10'/%3E%3C/svg%3E");
+}
+/* Risk icon — Experience */
+#experience::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a3050' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2L2 20h20L12 2z'/%3E%3Cline x1='12' y1='9' x2='12' y2='13'/%3E%3Ccircle cx='12' cy='17' r='.8' fill='%231a3050' stroke='none'/%3E%3C/svg%3E");
+}
+/* Architecture icon — Certifications */
+#certifications::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a3050' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='1' width='6' height='5' rx='1'/%3E%3Crect x='1' y='18' width='6' height='5' rx='1'/%3E%3Crect x='17' y='18' width='6' height='5' rx='1'/%3E%3Cline x1='12' y1='6' x2='12' y2='12'/%3E%3Cline x1='12' y1='12' x2='4' y2='18'/%3E%3Cline x1='12' y1='12' x2='20' y2='18'/%3E%3C/svg%3E");
+}
+/* Change Mgmt icon — Contact */
+#contact::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a3050' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='23 4 23 10 17 10'/%3E%3Cpolyline points='1 20 1 14 7 14'/%3E%3Cpath d='M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15'/%3E%3C/svg%3E");
 }
 
 /* ── About ── */

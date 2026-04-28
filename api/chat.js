@@ -92,8 +92,19 @@ Key achievements:
   • Earned multiple performance awards for impact and delivery.
 
 ADDITIONAL EXPERIENCE:
-- AOL, Ashburn — Senior Java Consultant
-- Booz Allen Hamilton, DC — Java Consultant
+
+AOL, Ashburn, VA | Senior Java Consultant | July 2010 – Sep. 2010
+- Upgraded AOL's advertisement platform to latest technologies and enhanced workflow.
+- Built new frontend and backend for the platform.
+- Scrum master for the team.
+- Conducted code reviews and quality analysis.
+
+Booz Allen Hamilton, Ashburn, VA | Senior Java Consultant | March 2010 – July 2010
+- Developed interactive front end using JSF, JSP and ADF; designed front-end architecture.
+- Used Java reflection to invoke validations based on rule set for error code generation.
+- Used Spring for dependency injection of DAO into business objects.
+- Implemented several design patterns including factory and singleton.
+
 - Verizon, Ashburn — Java Consultant
 - Sears, Ashburn — Java Consultant
 

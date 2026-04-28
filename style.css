@@ -109,6 +109,10 @@ a:hover { text-decoration: underline; }
 .dbg.architecture svg { width: 70px; height: 70px; }
 .dbg.change       { bottom: 14%; right: 5%; width: 100px; }
 .dbg.change svg   { width: 66px; height: 66px; }
+.dbg.kri          { top: 45%;   left: 2%;  width: 95px; }
+.dbg.kri svg      { width: 66px; height: 66px; }
+.dbg.issues       { bottom: 12%; left: 42%; width: 105px; }
+.dbg.issues svg   { width: 68px; height: 68px; }
 
 .hero-content { max-width: 540px; position: relative; z-index: 1; }
 

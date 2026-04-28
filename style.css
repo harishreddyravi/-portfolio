@@ -84,36 +84,6 @@ a:hover { text-decoration: underline; }
   mask-image: radial-gradient(ellipse 80% 80% at 60% 50%, black 30%, transparent 80%);
 }
 
-/* ── Domain background watermarks ── */
-.domain-bg {
-  position: absolute; inset: 0;
-  pointer-events: none; z-index: 0; overflow: hidden;
-}
-.dbg {
-  position: absolute;
-  display: flex; flex-direction: column; align-items: center; gap: .55rem;
-  opacity: .3; color: var(--navy);
-  transition: opacity .3s;
-}
-.dbg svg { display: block; }
-.dbg span {
-  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--navy);
-}
-/* Individual positions */
-.dbg.controls     { top: 12%;  left: 3%;   width: 90px;  }
-.dbg.controls svg { width: 64px; height: 64px; }
-.dbg.risk         { bottom: 16%; left: 7%;  width: 90px; }
-.dbg.risk svg     { width: 60px; height: 60px; }
-.dbg.architecture { top: 10%;   right: 3%; width: 100px; }
-.dbg.architecture svg { width: 70px; height: 70px; }
-.dbg.change       { bottom: 14%; right: 5%; width: 100px; }
-.dbg.change svg   { width: 66px; height: 66px; }
-.dbg.kri          { top: 8%;    left: 50%; transform: translateX(-50%); width: 95px; }
-.dbg.kri svg      { width: 66px; height: 66px; }
-.dbg.issues       { bottom: 12%; left: 42%; width: 105px; }
-.dbg.issues svg   { width: 68px; height: 68px; }
-
 .hero-content { max-width: 540px; position: relative; z-index: 1; }
 
 .hero-badge {

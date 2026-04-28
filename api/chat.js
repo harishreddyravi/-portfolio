@@ -105,8 +105,14 @@ Booz Allen Hamilton, Ashburn, VA | Senior Java Consultant | March 2010 – July 
 - Used Spring for dependency injection of DAO into business objects.
 - Implemented several design patterns including factory and singleton.
 
-- Verizon, Ashburn — Java Consultant
+- Verizon, Ashburn — Java Consultant (coordinated with QA team for defect resolution and release)
 - Sears, Ashburn — Java Consultant
+
+Western Michigan University Library, Chicago, IL | Web Developer (Graduate Assistant) | Aug 2005 – April 2007
+- Developed Search Path, an open-source web application built with scalability and compatibility across two databases.
+- Performed requirement analysis, design, coding, and implementation of Stat Check — a tool to generate statistics on student web page visits, helping WMU identify and remove unnecessary web pages.
+- Provided guidelines to other universities interested in adopting Search Path.
+- Nominated for Best Graduate Assistant at WMU in 2006.
 
 --- EDUCATION ---
 - Master of Science (MS), Computer Science — Western Michigan University, Kalamazoo, MI

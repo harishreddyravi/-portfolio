@@ -1,4 +1,5 @@
 // Vercel serverless function — /api/chat
+console.log('[chat.js] module loaded');
 const Anthropic = require('@anthropic-ai/sdk');
 
 const SYSTEM_PROMPT = `You are a helpful AI assistant representing Harish Reddy Ravi's professional portfolio.
@@ -91,15 +92,21 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'ANTHROPIC_API_KEY is not configured' });
   }
 
-  const client = new Anthropic({ apiKey });
-
-  const response = await client.messages.create({
-    model: 'claude-haiku-4-5-20251001',
-    max_tokens: 600,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: 'user', content: message.trim() }]
-  });
-
-  const reply = response.content[0]?.text || 'I had trouble generating a response. Please try again.';
-  return res.status(200).json({ reply });
+  try {
+    const client = new Anthropic({ apiKey });
+    const response = await client.messages.create({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 600,
+      system: SYSTEM_PROMPT,
+      messages: [{ role: 'user', content: message.trim() }]
+    });
+    const reply = response.content[0]?.text || 'I had trouble generating a response. Please try again.';
+    return res.status(200).json({ reply });
+  } catch (err) {
+    const status = err.status || 500;
+    const msg = status === 401
+      ? 'API key is invalid or expired — update ANTHROPIC_API_KEY in .env'
+      : err.message || 'Upstream API error';
+    return res.status(status).json({ error: msg });
+  }
 };

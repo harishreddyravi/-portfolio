@@ -1,0 +1,5 @@
+node_modules
+.env
+resume
+key.txt
+server.js

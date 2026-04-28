@@ -5,15 +5,22 @@ const path = require('path');
 async function writeLog(question, response) {
   const entry = { ts: new Date().toISOString(), q: question, a: response };
 
-  // Vercel KV (production)
-  if (process.env.KV_REST_API_URL) {
+  // Upstash Redis REST API (production)
+  if (process.env.UPSTASH_REDIS_REST_URL) {
     try {
-      const { kv } = require('@vercel/kv');
-      await kv.lpush('chat-logs', JSON.stringify(entry));
-      await kv.ltrim('chat-logs', 0, 999); // keep newest 1000
+      const url   = process.env.UPSTASH_REDIS_REST_URL;
+      const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+      const body  = JSON.stringify(entry);
+      // LPUSH keeps newest first; LTRIM keeps last 1000
+      await fetch(`${url}/lpush/chat-logs/${encodeURIComponent(body)}`, {
+        method: 'GET', headers: { Authorization: `Bearer ${token}` }
+      });
+      await fetch(`${url}/ltrim/chat-logs/0/999`, {
+        method: 'GET', headers: { Authorization: `Bearer ${token}` }
+      });
       return;
     } catch (e) {
-      console.error('[chat-log] KV error:', e.message);
+      console.error('[chat-log] Upstash error:', e.message);
     }
   }
 

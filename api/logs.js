@@ -10,15 +10,19 @@ module.exports = async (req, res) => {
   let entries = [];
   let source  = 'file';
 
-  // Vercel KV (production)
-  if (process.env.KV_REST_API_URL) {
+  // Upstash Redis REST API (production)
+  if (process.env.UPSTASH_REDIS_REST_URL) {
     try {
-      const { kv } = require('@vercel/kv');
-      const raw = await kv.lrange('chat-logs', 0, -1); // newest first (lpush)
-      entries = raw.map(e => (typeof e === 'string' ? JSON.parse(e) : e));
-      source = 'kv';
+      const url   = process.env.UPSTASH_REDIS_REST_URL;
+      const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+      const r     = await fetch(`${url}/lrange/chat-logs/0/-1`, {
+        method: 'GET', headers: { Authorization: `Bearer ${token}` }
+      });
+      const json = await r.json();
+      entries = (json.result || []).map(e => (typeof e === 'string' ? JSON.parse(e) : e));
+      source = 'upstash';
     } catch (e) {
-      return res.status(500).send(`KV error: ${e.message}`);
+      return res.status(500).send(`Upstash error: ${e.message}`);
     }
   } else {
     // Local file

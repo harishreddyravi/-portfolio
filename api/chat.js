@@ -1,21 +1,29 @@
-console.log('[chat.js] module loaded');
 const Anthropic = require('@anthropic-ai/sdk');
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
 
-function writeLog(question, response) {
-  const entry = JSON.stringify({
-    ts: new Date().toISOString(),
-    q: question,
-    a: response
-  });
+async function writeLog(question, response) {
+  const entry = { ts: new Date().toISOString(), q: question, a: response };
+
+  // Vercel KV (production)
+  if (process.env.KV_REST_API_URL) {
+    try {
+      const { kv } = require('@vercel/kv');
+      await kv.lpush('chat-logs', JSON.stringify(entry));
+      await kv.ltrim('chat-logs', 0, 999); // keep newest 1000
+      return;
+    } catch (e) {
+      console.error('[chat-log] KV error:', e.message);
+    }
+  }
+
+  // Local file fallback
   try {
     const dir = path.join(process.cwd(), 'logs');
     fs.mkdirSync(dir, { recursive: true });
-    fs.appendFileSync(path.join(dir, 'chat-log.jsonl'), entry + '\n', 'utf8');
-  } catch {
-    // Vercel read-only filesystem — fall back to dashboard logs
-    console.log('[chat-log]', entry);
+    fs.appendFileSync(path.join(dir, 'chat-log.jsonl'), JSON.stringify(entry) + '\n', 'utf8');
+  } catch (e) {
+    console.log('[chat-log]', JSON.stringify(entry));
   }
 }
 
@@ -119,7 +127,7 @@ module.exports = async function handler(req, res) {
       messages: [{ role: 'user', content: message.trim() }]
     });
     const reply = response.content[0]?.text || 'I had trouble generating a response. Please try again.';
-    writeLog(message.trim(), reply);
+    await writeLog(message.trim(), reply);
     return res.status(200).json({ reply });
   } catch (err) {
     const status = err.status || 500;

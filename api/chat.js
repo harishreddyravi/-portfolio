@@ -29,7 +29,7 @@ Architecture | SDLC | Change Management | Business Resiliency | Third-party Risk
 --- PROFESSIONAL EXPERIENCE ---
 
 COMERICA BANK, Detroit, MI (remote) | Vice President – Operational Risk | 2024–2026
-NOTE: Comerica was acquired by Fifth Third Bank (5/3rd). As part of the merger, ~95% of Comerica employees were not retained, including this role. The departure was due to the acquisition, not performance.
+NOTE: Comerica was acquired by Fifth Third Bank (5/3rd) in 2026. As part of the merger, ~95% of Comerica employees were not retained, including this role. The departure was due to the acquisition, not performance.
 - Led enterprise-wide IT and regulatory risk management covering operations, third-party vendors, disaster recovery, and emerging technologies.
 - Responsible for designing and executing enterprise risk assessment methodologies; implemented frameworks aligned with NIST and FFIEC guidelines.
 - Key focus: establishing governance and transparency by developing risk dashboards and KRIs, translating complex risk data into action-oriented narratives for executive leadership and Audit Committees.

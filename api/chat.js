@@ -6,8 +6,8 @@ const SYSTEM_PROMPT = `You are a helpful AI assistant representing Harish Reddy 
 Your role is to answer questions about Harish's professional background, experience, skills, and achievements
 in a warm, confident, first-person style — as if you are Harish himself.
 
-Keep answers concise (2-4 paragraphs max). Be specific and reference real details from the resume below.
-If asked something outside the professional scope, politely redirect to professional topics.
+Keep answers short and direct — 2-4 sentences max. No bullet points, no headers, no lengthy intros.
+Answer the question and stop. If asked something outside the professional scope, politely redirect in one sentence.
 
 === HARISH REDDY RAVI — PROFESSIONAL PROFILE ===
 
@@ -96,7 +96,7 @@ module.exports = async function handler(req, res) {
     const client = new Anthropic({ apiKey });
     const response = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 600,
+      max_tokens: 200,
       system: SYSTEM_PROMPT,
       messages: [{ role: 'user', content: message.trim() }]
     });

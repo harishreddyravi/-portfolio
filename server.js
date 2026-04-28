@@ -27,6 +27,9 @@ app.post('/api/setkey', (req, res) => {
   res.json({ ok: true });
 });
 
+// Logs viewer
+app.get('/api/logs', (req, res) => require('./api/logs')(req, res));
+
 // Chat
 app.post('/api/chat', (req, res) => {
   console.log('[chat] request received');

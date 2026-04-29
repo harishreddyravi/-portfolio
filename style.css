@@ -59,6 +59,21 @@ a:hover { text-decoration: underline; }
 .nav-links { display: flex; gap: 1.5rem; list-style: none; margin-left: auto; }
 .nav-links a { color: var(--muted); font-size: .85rem; font-weight: 500; transition: color .18s; }
 .nav-links a:hover { color: var(--navy); text-decoration: none; }
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle { cursor: pointer; }
+.nav-dropdown-menu {
+  display: none; position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%); background: #fff; border: 1px solid var(--border);
+  border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.1);
+  list-style: none; min-width: 130px; padding: .9rem 0 .4rem; z-index: 200;
+}
+.nav-dropdown-menu li a {
+  display: block; padding: .5rem 1.1rem; font-size: .83rem;
+  font-weight: 600; color: var(--navy); white-space: nowrap;
+}
+.nav-dropdown-menu li a:hover { color: var(--blue); background: var(--surface); }
+.nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
 .chat-nav-btn {
   background: var(--blue); color: #fff; border: none;
   padding: .42rem 1.1rem; border-radius: 6px; font-size: .83rem; font-weight: 600;

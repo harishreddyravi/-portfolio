@@ -122,7 +122,7 @@ Western Michigan University Library, Chicago, IL | Web Developer (Graduate Assis
 - AWS Certified Solutions Architect Associate (Active)
 - Microsoft Certified Azure Fundamentals (Active)
 - Graph Data Modeling Fundamentals (Active)
-- CISSP Certification (Planned May 7th)
+- CISSP (Active)
 - AWS Generative AI (In Progress)
 
 === END OF PROFILE ===`;
